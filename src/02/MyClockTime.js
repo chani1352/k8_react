@@ -1,4 +1,7 @@
+//import {useState} from 'react';
+
 function MyClockTime(){
+  //const [n,setN] = useState();
   let current = new Date();
   current = current.toLocaleTimeString();
   return (

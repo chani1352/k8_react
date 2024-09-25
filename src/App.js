@@ -4,8 +4,9 @@ import { IoHome } from "react-icons/io5";
 // import Hello from './01/Hello';
 // import MyClock from './02/MyClock';
 // import MyDiv1 from './03/MyDiv1';
-//import MyList from './04/MyList';
-import Lotto from './05/Lotto';
+// import MyList from './04/MyList';
+// import Lotto from './05/Lotto';
+import FoodMain from './06/FoodMain';
 
 
 function App() {
@@ -26,9 +27,12 @@ function App() {
       <main className='w-full grow
                        flex flex-col justify-center items-center
                        overflow-y-auto'>
+        {/* <Hello /> */}
+        {/* <MyClock /> */}
         {/* <MyDiv1 /> */}
         {/* <MyList />          */}
-        <Lotto />               
+        {/* <Lotto />                */}
+        <FoodMain />
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center
