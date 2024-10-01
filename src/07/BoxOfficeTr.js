@@ -2,7 +2,7 @@ export default function BoxOfficeTr({handleClick,rank,movieNm,salesAcc,audiCnt,r
   return (
     <>
       <tr onClick={handleClick}
-          className="bg-white hover:bg-orange-200 hover:font-bold">
+          className="bg-white hover:bg-orange-200">
         <td className="px-6 py-4 font-medium
                       text-gray-900 text-center whitespace-nowrap">
           {rank}
