@@ -10,7 +10,8 @@ import { IoHome } from "react-icons/io5";
 // import BoxOffice from './07/BoxOffice';
 // import MyBox from './08/MyBox';
 // import Traffic from './09/Traffic';
-import MyRef from './10/MyRef';
+// import MyRef from './10/MyRef';
+import Gallery from './11/Gallery';
 
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
         {/* <BoxOffice /> */}
         {/* <MyBox /> */}
         {/* <Traffic /> */}
-        <MyRef />
+        {/* <MyRef /> */}
+        <Gallery />
       </main>
       <footer className='w-full h-20
                          flex justify-center items-center
