@@ -1,45 +1,64 @@
 // import TailCard from "../UI/TailCard"
 import TailButton from "../UI/TailButton"
-import { useRef,useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
+import TailCard from "../UI/TailCard";
 
 export default function Gallery() {
 
   const x = useRef();
+  const [getData, setGetData] = useState([]);
+  const [info, setInfo] = useState();
 
 
-  useEffect(()=>{
-    x.current.focus();
-    getFetchData();
-  },[]);
 
-  const getFetchData = (keyword)=> {
+  const getFetchData = async () => {
+    const keyword = encodeURI(x.current.value);
     let url = `https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=`;
-    url =`${url}${process.env.REACT_APP_API_KEY}`;
-    url =`${url}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${keyword}&_type=json`;
-    
+    url = `${url}${process.env.REACT_APP_API_KEY}`;
+    url = `${url}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=${keyword}&_type=json`;
 
-    fetch(url)
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+
+    // fetch(url)
+    //   .then(resp => resp.json())
+    //   .then(data => setGetData(data['response']['body']['items']['item']))
+    //   .catch(err => console.log(err))
+
+    const resp = await fetch(url);
+    const data = await resp.json();
+    setGetData(data['response']['body']['items']['item']);
+    console.log(data);
 
   }
 
   const handleSelect = () => {
-    const data = encodeURI(x.current.value);
-    getFetchData(data);
-    console.log(data);
+    if (x.current.value == '') {
+      alert("키워드를 입력하세요.");
+      x.current.focus();
+      return;
+    }
+    getFetchData();
   }
 
   const handleCancel = () => {
     x.current.value = '';
     x.current.focus();
+    setInfo('');
   }
+
+  useEffect(() => {
+    x.current.focus();
+  }, []);
+
+  useEffect(() => {
+    let tm = getData.map(item => <TailCard key={item['galContentId']} imgUrl={item['galWebImageUrl']} title={item['galTitle']}
+      content={item['galPhotographyLocation']} kw={item['galSearchKeyword']} />)
+    setInfo(tm);
+  }, [getData]);
 
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-10/12 p-5">
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-10/12 p-5 flex-col justify-center items-center">
         <h1 className="w-full flex justify-center text-3xl mb-5">
           한국관광공사 사진 정보
         </h1>
@@ -60,11 +79,10 @@ export default function Gallery() {
           </div>
         </div>
       </div>
+      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2'>
+        {info}
+      </div>
 
-      {/* <TailCard imgUrl = "http://tong.visitkorea.or.kr/cms2/website/52/2586952.jpg"
-                title = "서울빛초롱축제"
-                content = "서울특별시 종로구"
-                kw = "서울빛초롱축제, 서울특별시 종로구, 2018 하반기 기획사진, 청계천 야경, 서울 등 축제, 서울 축제"/> */}
     </div>
   )
 }
