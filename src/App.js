@@ -39,7 +39,7 @@ function App() {
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Festival'>축제</Link></li>
           </ul>
           <p className='text-3xl font-bold p-5'>
-            <IoHome />
+          <Link to='/'><IoHome /></Link>
           </p>
 
         </header>
