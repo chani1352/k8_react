@@ -16,6 +16,8 @@ import Traffic from './09/Traffic';
 import Gallery from './11/Gallery';
 import Festival from './12/Festival';
 // import RouteMain from './13/RouteMain';
+import Fcst from './14/Fcst';
+import FcstList from './14/FcstList';
 
 function App() {
 
@@ -29,7 +31,7 @@ function App() {
           <p className='text-2xl font-bold p-5'>
             K-digital 8기
           </p>
-          <ul className='w-2/5 flex justify-between items-center font-bold'>
+          <ul className='w-3/5 flex justify-between items-center font-bold'>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/'>시계</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Lotto'>로또</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/FoodMain'>푸드뱅크</Link></li>
@@ -37,6 +39,9 @@ function App() {
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md' ><Link to='/Traffic'>교통사고</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Gallery'>관광</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Festival'>축제</Link></li>
+            {/* <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/RouteMain'>루트</Link></li> */}
+            <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Fcst'>일기예보</Link></li>
+
           </ul>
           <p className='text-3xl font-bold p-5'>
           <Link to='/'><IoHome /></Link>
@@ -60,7 +65,10 @@ function App() {
             {/* <MyRef /> */}
             <Route path='/Gallery' element={<Gallery />} />
             <Route path='/Festival' element={<Festival />} />
+            {/* <Route path='/RouteMain' element={<RouteMain />} /> */}
             {/* <RouteMain /> */}
+            <Route path='/Fcst' element={<Fcst />} />
+            <Route path='/FcstList' element={<FcstList />} />
           </Routes>
         </main>
 
