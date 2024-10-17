@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route,Link } from 'react-router-dom';
 
 // import Hello from './01/Hello';
 import MyClock from './02/MyClock';
-// import MyDiv1 from './03/MyDiv1';
+import MyDiv1 from './03/MyDiv1';
 // import MyList from './04/MyList';
 import Lotto from './05/Lotto';
 import FoodMain from './06/FoodMain';
@@ -18,6 +18,7 @@ import Festival from './12/Festival';
 // import RouteMain from './13/RouteMain';
 import Fcst from './14/Fcst';
 import FcstList from './14/FcstList';
+import RecoilMain from './15/RecoilMain';
 
 function App() {
 
@@ -39,7 +40,6 @@ function App() {
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md' ><Link to='/Traffic'>교통사고</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Gallery'>관광</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Festival'>축제</Link></li>
-            {/* <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/RouteMain'>루트</Link></li> */}
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Fcst'>일기예보</Link></li>
 
           </ul>
@@ -49,7 +49,7 @@ function App() {
 
         </header>
 
-        <main className='w-full grow
+        <main className='w-full flex-grow
                        flex flex-col items-center
                        overflow-y-auto'>
           <Routes>
@@ -65,10 +65,11 @@ function App() {
             {/* <MyRef /> */}
             <Route path='/Gallery' element={<Gallery />} />
             <Route path='/Festival' element={<Festival />} />
-            {/* <Route path='/RouteMain' element={<RouteMain />} /> */}
             {/* <RouteMain /> */}
             <Route path='/Fcst' element={<Fcst />} />
             <Route path='/FcstList' element={<FcstList />} />
+            <Route path='/MyDiv1' element={<MyDiv1 />} />
+            <Route path='/recoil1' element={<RecoilMain />} />
           </Routes>
         </main>
 

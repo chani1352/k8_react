@@ -16,6 +16,13 @@ export default function FcstList() {
   const [cate, setCate] = useState();
   const [info,setInfo] = useState();
 
+  const sky = {'1' : '🌞(맑음)', '3':'⛅(구름많음)', '4' : '☁(흐림)'}
+  const rain = {'0' :'🌞(없음)' , '1' : '🌧(비)', '2' : '🌧🌨(비/눈)' , 
+                '3' :'🌨(눈)' , '4' : '🌦(소나기)', '5' : '🌦(빗방울)' , 
+                '6' : '🌦(빗방울눈날림)' , '7' : '🌦(눈날림)' }
+
+                             
+
 
   const getFectchData = async () => {
     const apikey = process.env.REACT_APP_API_KEY;
@@ -34,9 +41,14 @@ export default function FcstList() {
   }, []);
 
   const handleCate = () => {
+    if(!tdata || category.current.value ==="") return;
     const hanEn = category.current.value.split(',');
     let tm = tdata.filter(item=>item['category'] == hanEn[1]);
-    console.log(tm);
+    let unit = getcode.filter(item => item['항목값'] == hanEn[1])[0];
+    console.log('getcode',getcode);
+    console.log(unit);
+    unit = unit['단위'];
+    console.log(unit);
     let i = 0;
     tm = tm.map((item,i)=> <tr key={item.category+i+1} className="bg-white border-b">
                            <td className="px-6 py-4 font-medium text-gray-900 text-center whitespace-nowrap">
@@ -49,10 +61,14 @@ export default function FcstList() {
                             {item['fcstTime'].slice(0,2)}:{item['fcstTime'].slice(2,4)}
                             </td>
                             <td className="px-6 py-4 text-center">
-                            {hanEn[0] =='하늘상태' ? item['fcstValue'] == 1 ? '🌞(맑음)' : item['fcstValue'] == 3 ? '⛅(구름많음)' : '☁(흐림)' : 
+                            {hanEn[0] =='하늘상태' ? sky[item['fcstValue']] : 
+                             hanEn[0] =='강수형태' ? rain[item['fcstValue']] : item['fcstValue'] + unit} 
+                           
+
+                            {/* {hanEn[0] =='하늘상태' ? item['fcstValue'] == 1 ? '🌞(맑음)' : item['fcstValue'] == 3 ? '⛅(구름많음)' : '☁(흐림)' : 
                              hanEn[0] =='강수형태' ? item['fcstValue'] == 0 ? '🌞(없음)' : item['fcstValue'] == 1 ? '🌧(비)' : item['fcstValue'] == 2 ? '🌧🌨(비/눈)' :
                              item['fcstValue'] == 3 ? '🌨(눈)' : item['fcstValue'] == 4 ? '🌦(소나기)' : item['fcstValue'] == 5 ? '🌦(빗방울)' : item['fcstValue'] == 6 ? '🌦(빗방울눈날림)' :
-                             '🌦(눈날림)' : item['fcstValue'] }
+                             '🌦(눈날림)' : item['fcstValue'] + unit} */}
                             </td>
                             </tr>)
     setInfo(tm);            
@@ -66,7 +82,7 @@ export default function FcstList() {
         </div>
         <div>
           <select ref={category} className='form-select w-full' onChange={handleCate}>
-            <option value=" ">항목선택</option>
+            <option value="">항목선택</option>
             {cate}
           </select>
         </div>
