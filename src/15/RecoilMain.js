@@ -1,11 +1,13 @@
 
-import {RecoilRoot} from 'recoil';
-import Recoil1 from './Recoil1';
+import Rdiv1 from "./Rdiv1"
+import { RecoilRoot } from "recoil";
 
 export default function RecoilMain() {
   return (
     <RecoilRoot>
-      <Recoil1 />
+    <div className='w-full h-full flex flex-col justify-center items-center'>
+      <Rdiv1 />
+    </div>
     </RecoilRoot>
   )
 }

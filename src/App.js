@@ -19,6 +19,7 @@ import Festival from './12/Festival';
 import Fcst from './14/Fcst';
 import FcstList from './14/FcstList';
 import RecoilMain from './15/RecoilMain';
+import Rest from './16/Rest';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Gallery'>관광</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Festival'>축제</Link></li>
             <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Fcst'>일기예보</Link></li>
+            <li className='p-2 hover:bg-blue-500 hover:text-white rounded-md'><Link to='/Rest'>Restfull</Link></li>
 
           </ul>
           <p className='text-3xl font-bold p-5'>
@@ -69,7 +71,8 @@ function App() {
             <Route path='/Fcst' element={<Fcst />} />
             <Route path='/FcstList' element={<FcstList />} />
             <Route path='/MyDiv1' element={<MyDiv1 />} />
-            <Route path='/recoil1' element={<RecoilMain />} />
+            <Route path='/RecoilMain' element={<RecoilMain />} />
+            <Route path='/Rest' element={<Rest />} />
           </Routes>
         </main>
 
