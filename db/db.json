@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "This is a comment1.",
-      "author": 1
+      "id": "8078",
+      "title": "테스트1",
+      "author": "박래찬"
     },
     {
-      "id": "2",
-      "title": "This is a comment2.",
-      "author": 1
+      "id": "0224",
+      "title": "테스트2",
+      "author": "박래찬"
     }
   ],
   "comments": [
@@ -24,4 +24,3 @@
     }
   ]
 }
-
